@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Admin Panel</div>
+        <ul class="nav-links">
+            <li><a href="shop.html">Natrag u shop</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="admin-container">
+
+    <h2>Upravljanje proizvodima</h2>
+
+    <!-- Forma za dodavanje proizvoda -->
+    <form id="addProductForm" class="admin-form">
+        <h3>Dodaj novi proizvod</h3>
+
+        <input type="text" name="name" placeholder="Naziv proizvoda" required>
+        <textarea name="description" placeholder="Opis" required></textarea>
+        <input type="number" name="price" placeholder="Cijena (EUR)" required>
+        <input type="number" name="stock" placeholder="Količina" required>
+        <input type="text" name="image" placeholder="URL slike" required>
+
+        <button type="submit" class="btn">Dodaj</button>
+    </form>
+
+    <h3>Popis proizvoda</h3>
+    <div id="adminProductList" class="admin-product-list">
+        <!-- Dinamički popis proizvoda -->
+    </div>
+
+</section>
+
+<script src="js/admin.js"></script>
+
+</body>
+</html>

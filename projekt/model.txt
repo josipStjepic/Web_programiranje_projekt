@@ -1,0 +1,39 @@
+project/
+│
+├── public/
+│   ├── index.html        (početna stranica)
+│   ├── shop.html         (pregled proizvoda)
+│   ├── product.html      (detalji proizvoda)
+│   ├── login.html        (prijava)
+│   ├── register.html     (registracija)
+│   ├── admin.html        (admin sučelje)
+│   │
+│   ├── css/
+│   │   └── style.css
+│   │
+│   ├── js/
+│   │   ├── app.js              (globalne funkcije)
+│   │   ├── auth.js             (login/registracija)
+│   │   ├── products.js         (prikaz proizvoda – AJAX)
+│   │   ├── admin.js            (CRUD admin)
+│   │   └── cart.js             (košarica)
+│   │
+│   └── img/
+│       └── (slike proizvoda, logo itd)
+│
+├── api/
+│   ├── db.php          (konekcija na bazu)
+│   ├── users.php       (registracija, login, logout)
+│   ├── products.php    (CRUD proizvoda)
+│   ├── orders.php      (spremanje narudžbi)
+│   └── utils.php       (pomoćne funkcije)
+│
+├── sql/
+│   └── database.sql    (SQL skripta za kreiranje tablica)
+│
+└── README.txt
+
+
+pero_peric
+pero@peric.hr
+asdfasdf
