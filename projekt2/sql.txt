@@ -1,0 +1,55 @@
+-- KREIRANJE BAZE
+CREATE DATABASE IF NOT EXISTS trgovina
+CHARACTER SET utf8mb4 
+COLLATE utf8mb4_croatian_ci;
+
+USE trgovina;
+
+-- TABLICA KORISNICI
+CREATE TABLE `korisnici` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `ime` VARCHAR(20) COLLATE utf8mb4_croatian_ci NOT NULL,
+  `prezime` VARCHAR(20) COLLATE utf8mb4_croatian_ci NOT NULL,
+  `e_mail` VARCHAR(50) COLLATE utf8mb4_croatian_ci NOT NULL,
+  `lozinka` VARCHAR(100) COLLATE utf8mb4_croatian_ci NOT NULL,
+  `uloga` VARCHAR(20) COLLATE utf8mb4_croatian_ci NOT NULL COMMENT 'admin ili korisnik',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_croatian_ci;
+
+-- UNOS ADMINA
+INSERT INTO `korisnici` (`ime`, `prezime`, `e_mail`, `lozinka`, `uloga`)
+VALUES ('Admin', 'Adminović', 'admin@admin.hr', '123456', 'admin');
+
+-- TABLICA PROIZVODI (sa slikom)
+CREATE TABLE `proizvodi` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nazivProizvod` VARCHAR(100) COLLATE utf8mb4_croatian_ci NOT NULL,
+  `opis` VARCHAR(1000) COLLATE utf8mb4_croatian_ci NOT NULL,
+  `kolicina` INT NOT NULL,
+  `cijena` DECIMAL(10,2) NOT NULL,
+  `slika` VARCHAR(255) COLLATE utf8mb4_croatian_ci DEFAULT NULL COMMENT 'putanja ili URL slike',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_croatian_ci;
+
+-- TABLICA NARUDŽBE
+CREATE TABLE `narudzbe` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `korisnik_id` INT NOT NULL,
+  `datum` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ukupna_cijena` DECIMAL(10,2) NOT NULL,
+  `status` VARCHAR(20) COLLATE utf8mb4_croatian_ci NOT NULL DEFAULT 'u obradi',
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`korisnik_id`) REFERENCES `korisnici`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_croatian_ci;
+
+-- TABLICA STAVKE NARUDŽBI
+CREATE TABLE `narudzbe_stavke` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `narudzba_id` INT NOT NULL,
+  `proizvod_id` INT NOT NULL,
+  `kolicina` INT NOT NULL,
+  `cijena` DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`narudzba_id`) REFERENCES `narudzbe`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`proizvod_id`) REFERENCES `proizvodi`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_croatian_ci;

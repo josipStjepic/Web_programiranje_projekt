@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinamo Web Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-brand">Dinamo Shop</div>
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Početna</a>
+        <a href="prijava.php">Prijava</a>
+        <a href="registracija.php">Registracija</a>
+        <a href="izvori.php">Izvori</a>
+    </div>
+</nav>
+
+<h1 style="text-align:center; margin-top:30px;">Dobrodošli u Dinamo Web Shop!</h1>
+
+<p style="text-align:center; max-width:700px; margin:10px auto;">
+    Ovdje možete kupiti originalne dresove i navijačku opremu.
+</p>
+
+
+<div style="width:100%; margin:30px 0;">
+    <img src="https://www.baltana.com/files/sports-1/GNK-Dinamo-Zagreb-Wallpaper-3840x2400-66615.jpg"
+         alt="Dinamo slika"
+         style="width:100%; height:auto; max-height: 500px; object-fit:cover;">
+</div>
+
+
+<section style="max-width:900px; margin:40px auto; text-align:center; line-height:1.7;">
+
+    <div style="background:#f5f5f5; padding:25px; border-radius:10px; margin-bottom:25px;">
+        <h2>O našem webshopu</h2>
+        <p>
+            Dinamo Web Shop mjesto je za sve navijače koji žele originalne dresove,
+            navijačku opremu i ekskluzivne artikle svog omiljenog kluba.
+        </p>
+    </div>
+
+    <div style="background:#eef4ff; padding:25px; border-radius:10px; margin-bottom:25px;">
+        <h2>Što nudimo?</h2>
+        <p>
+            • Originalne dresove<br>
+            • Navijačke šalove i rekvizite<br>
+            • Majice, trenirke i dodatke<br>
+            • Limitirane kolekcije i posebne edicije
+        </p>
+    </div>
+
+    <div style="background:#f9f9f9; padding:25px; border-radius:10px; margin-bottom:25px;">
+        <h2>Zašto kupovati kod nas?</h2>
+        <p>
+            Naš webshop je jednostavan za korištenje, siguran i dostupan na svim uređajima.
+            Svi proizvodi su provjereni i dolaze iz službene ponude kluba.
+        </p>
+    </div>
+
+    <div style="background:#e8f7ff; padding:25px; border-radius:10px;">
+        <h2>Uskoro dodajemo još proizvoda!</h2>
+        <p>
+            Redovito proširujemo ponudu, pa svakako navrati opet.
+        </p>
+    </div>
+
+</section>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("open");
+}
+</script>
+
+<footer class="footer">
+    <p>@Josip Stjepić</p>
+    <p>2025 / 2026</p>
+</footer>
+
+</body>
+</html>
