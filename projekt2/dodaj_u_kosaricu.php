@@ -1,37 +1,29 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['prijavljen'])) {
-    echo json_encode(["status" => "error", "message" => "Niste prijavljeni"]);
-    exit();
-}
+$id = $_POST['id'];
+$akcija = $_POST['akcija'];
 
-$id       = $_POST['id'];
-$naziv    = $_POST['naziv'];
-$cijena   = $_POST['cijena'];
-$kolicina = $_POST['kolicina'];
-
-if (!isset($_SESSION['kosarica'])) {
-    $_SESSION['kosarica'] = [];
-}
-
-// Ako isti proizvod postoji → povećaj količinu
-$found = false;
-foreach ($_SESSION['kosarica'] as &$stavka) {
+foreach ($_SESSION['kosarica'] as $key => &$stavka) {
     if ($stavka['id'] == $id) {
-        $stavka['kolicina'] += $kolicina;
-        $found = true;
+        if ($akcija === "plus") {
+            $stavka['kolicina']++;
+        }
+
+        if ($akcija === "minus") {
+            $stavka['kolicina']--;
+            if ($stavka['kolicina'] <= 0) {
+                unset($_SESSION['kosarica'][$key]);
+            }
+        }
+
         break;
     }
 }
 
-if (!$found) {
-    $_SESSION['kosarica'][] = [
-        'id' => $id,
-        'naziv' => $naziv,
-        'cijena' => $cijena,
-        'kolicina' => $kolicina
-    ];
-}
+$_SESSION['kosarica'] = array_values($_SESSION['kosarica']);
 
-echo json_encode(["status" => "success"]);
+echo json_encode([
+    "status" => "success",
+    "kosarica" => $_SESSION['kosarica']
+]);
